@@ -13,7 +13,7 @@ body {
 .background {
     position: relative;
     height: 100vh;
-    background-image: url("images/illustration_3.png");
+    background-image: url("images/Background_3.jpg");
     background-size: cover;
     background-position: center;
     filter: blur(2px);
