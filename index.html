@@ -37,31 +37,122 @@
             </p>
         </div>
         <div class="profile-image">
-            <img src="images/ illustration_2.png" alt="プロフィール画像">
+            <img src="images/ illustration_3.png" alt="プロフィール画像">
         </div>
     </section>
 
     <!-- SNSリンクセクション -->
     <section class="social-links">
         <h2>Follow Me on Social Media</h2>
-        <ul>
-            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-            <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
-            <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
-        </ul>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<ul>
+    <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+    <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+    <li><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+</ul>
     </section>
 
-    <script>
-        // スクロール時にプロフィールセクションが表示される処理
-        window.addEventListener('scroll', function() {
-            var profileSection = document.getElementById('profile');
-            var sectionPosition = profileSection.getBoundingClientRect().top;
-            var screenPosition = window.innerHeight / 1.3;
+<!-- Swiper スライドショー -->
+<section class="swiper-section">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
 
-            if (sectionPosition < screenPosition) {
-                profileSection.classList.add('active');
-            }
-        });
+            <!-- youtube埋め込みスライド 1 -->
+            <div class="swiper-slide">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+
+            <!-- youtube埋め込みスライド 2 -->
+            <div class="swiper-slide">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+
+            <!-- youtube埋め込みスライド 3 -->
+            <div class="swiper-slide">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+
+            <!-- youtube埋め込みスライド 4 -->
+            <div class="swiper-slide">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_4" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+
+        </div>
+        <!-- スライドのページインジケーター -->
+        <div class="swiper-pagination"></div>
+        <!-- スライドのナビゲーションボタン -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+
+<!-- 横長の画像を挿入 -->
+<section class="wide-image-section">
+    <img src="images/your-wide-image.jpg" alt="Wide Image">
+</section>
+
+<footer style="background-color: #333; color: white; text-align: center; padding: 20px 0; position: relative; bottom: 0; width: 100%;">
+    <p>&copy; 2024 Music Lounge. All rights reserved.</p>
+</footer>
+
+
+<!-- SwiperJS CDN -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<script>
+    // SwiperJSの初期化
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 10000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // スクロール時にプロフィールセクションが表示される処理
+    window.addEventListener('scroll', function() {
+        var profileSection = document.getElementById('profile');
+        var sectionPosition = profileSection.getBoundingClientRect().top;
+        var screenPosition = window.innerHeight / 1.3;
+
+        if (sectionPosition < screenPosition) {
+            profileSection.classList.add('active');
+        }
+    });
+
+    // スクロール時にナビゲーションバーの背景色を変更
+    window.addEventListener('scroll', function() {
+        var nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        } else {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        }
+    });
+</script>
+
+
     </script>
 </body>
 </html>
