@@ -222,7 +222,7 @@ nav ul li a.active {
 }
 
 .topics-section {
-    max-width: 900px;
+    max-width: 1800px;
     margin: 50px auto;
     padding: 30px;
     background: linear-gradient(135deg, #ff8c42, #ffe5b4); /* オレンジ系グラデーション */
@@ -248,7 +248,7 @@ nav ul li a.active {
 
 .topics-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     gap: 25px;
 }
 
