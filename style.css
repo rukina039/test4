@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #b0b0b0 !important;
-    background-color: #b0b0b0 !important;
     color: #333;
     overflow-x: hidden;
 }
@@ -223,7 +222,7 @@ nav ul li a.active {
 }
 
 .topics-section {
-    max-width: 1800px;
+    max-width: 900px;
     margin: 50px auto;
     padding: 30px;
     background: linear-gradient(135deg, #ff8c42, #ffe5b4); /* オレンジ系グラデーション */
