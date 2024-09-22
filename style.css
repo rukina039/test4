@@ -45,6 +45,7 @@ body {
 
 /* ナビゲーションバー */
 nav {
+    display: none; /* 初期状態で非表示 */
     position: fixed;
     top: 0;
     right: 0;
@@ -55,6 +56,10 @@ nav {
     padding: 10px 20px;
     border-radius: 0 0 10px 10px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.visible {
+    display: block; /* スクロール時に表示 */
 }
 
 nav ul {
