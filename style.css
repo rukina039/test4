@@ -455,6 +455,7 @@ nav ul li a.active {
 
 
 /* モバイル対応 */
+/* モバイル対応 */
 @media screen and (max-width: 768px) {
     /* ナビゲーションバー */
     nav ul {
@@ -525,6 +526,30 @@ nav ul li a.active {
 
     #subject {
         width: 90%; /* タイトルの入力欄も広げる */
+    }
+
+    /* メッセージボックスの調整 */
+    textarea#message {
+        width: 100%; /* スマホに合わせて幅を100%に */
+        height: 150px; /* 高さを調整 */
+    }
+
+    /* 画像を問い合わせフォームの下に配置 */
+    .contact-section {
+        flex-direction: column; /* 垂直に並べる */
+        text-align: center;
+    }
+
+    .contact-image {
+        position: relative; /* 位置指定を相対に変更 */
+        bottom: 0; /* 下に配置 */
+        right: 0;
+        margin-top: 20px; /* フォームとの間にスペースを追加 */
+    }
+
+    .contact-image img {
+        width: 80%; /* 画像の幅を調整 */
+        height: auto;
     }
 
     /* フッター */
