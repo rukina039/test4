@@ -16,7 +16,6 @@ body {
     background-image: url("images/Background_3.jpg");
     background-size: cover;
     background-position: center;
-    filter: blur(2px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +55,7 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: flex-end; /* 右寄せにする */
 }
 
 nav ul li {
@@ -86,9 +86,9 @@ nav ul li a.active {
 }
 
 .swiper-container {
-    width: 60%;
+    width: 50%;
     height: 500px;
-    margin: auto;
+    margin: 1px;
 }
 
 .swiper-slide {
@@ -96,11 +96,11 @@ nav ul li a.active {
     justify-content: center; /* 水平方向に中央揃え */
     align-items: center; /* 垂直方向に中央揃え */
     background: transparent; /* 背景を透明に */
-    width: 80%; /* スライド全体の幅を100%に */
+    width: 100%; /* スライド全体の幅を100%に */
 }
 
 .swiper-slide iframe {
-    width: 90%;
+    width: 98%;
     height: 90%;
 }
 
@@ -160,7 +160,7 @@ nav ul li a.active {
     font-size: 2rem;
     margin-bottom: 20px;
     font-family: 'Poppins', sans-serif;
-    color: #333;
+    color: #ff4500; /* オレンジに設定 */
 }
 
 .social-links ul {
@@ -190,6 +190,15 @@ nav ul li a.active {
     font-size: 2rem; /* アイコンのサイズ */
 }
 
+.fa-x:before {
+    content: 'U+1d54f'; /* Xを表示 */
+    font-family: sans-serif;
+    font-weight: bold; /* 太字に設定 */
+    font-style: normal; /* イタリックを無効に */
+    font-size: 33px; /* 必要に応じてフォントサイズを調整 */
+}
+
+
 /* 横長の画像セクション */
 .wide-image-section {
     width: 100%;
@@ -204,6 +213,238 @@ nav ul li a.active {
     border-radius: 10px; /* 角を少し丸める */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影をつける */
 }
+
+.topics-section {
+    max-width: 1800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ff8c42, #ffe5b4); /* オレンジ系グラデーション */
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.topics-title {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topics-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.topics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+    gap: 25px;
+}
+
+.topic {
+    background: linear-gradient(45deg, rgba(255, 155, 66, 0.1), rgba(255, 140, 66, 0.3), rgba(255, 166, 77, 0.3)); /* 濃い部分を少し明るく調整 */
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.topic::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    transform: rotate(30deg);
+    pointer-events: none;
+}
+
+.topic.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.topic:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* h3の文字色を調整 */
+.topic h3 {
+    font-size: 2em;
+    color: #333; /* 濃いグレーに設定して背景に対して見やすくする */
+    margin-bottom: 15px;
+    position: relative;
+    background: none; /* 背景グラデーションを削除 */
+}
+
+.topic h3::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #ff8c00, #ff6f00);
+    margin-top: 10px;
+}
+
+/* pの文字色も調整 */
+.topic p {
+    font-size: 1.3em;
+    color: #444; /* 少し濃いめのグレーに設定 */
+    line-height: 1.6;
+}
+
+/* リンクの色も調整 */
+.topic a {
+    font-size: 1.3em;
+    color: #ff4500; /* リンクはアクセントとして濃いオレンジ */
+    line-height: 1.6;
+}
+
+.contact-section {
+    display: flex;
+    background-color: rgba(255, 166, 77, 0.6); /* topicのグラデーションの最も薄い色に近い色を設定 */
+    color: #fff;
+    max-width: 100%;
+    margin: 50px auto 0 auto;
+    padding: 0;
+    border-radius: 0px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+    .contact-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+.contact-text {
+    flex: 2;
+    padding: 20px;
+    text-align: left;
+    color: #333; /* 濃いグレーに調整して、背景色に対して読みやすく */
+}
+
+.contact-text h2 {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    color: #222; /* タイトルは少し濃いめの色に */
+}
+
+.contact-text p {
+    font-size: 15px;
+    margin-top: 1px;
+    color: #333; /* 本文も濃いグレーに設定 */
+}
+.contact-image {
+    position: absolute; /* 絶対位置を指定 */
+    bottom: 0; /* 下に配置 */
+    right: 0; /* 右に配置 */
+    padding: 10px; /* 少し余白を追加 */
+}
+
+.contact-image img {
+    width: 300px;
+    border-radius: 50%;
+}
+    .highlight {
+        background-color: rgba(255, 140, 0, 0.3); /* 薄いオレンジ */
+        padding: 0 5px;
+    }
+
+    form label {
+        font-size: 12px;
+        color: #333;
+        font-weight: normal;
+        margin-bottom: 3px;
+        display: block;
+    }
+
+    form input {
+        width: 10%;
+        padding: 5px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #ffcc80;
+        color: #333;
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+        color: #666;
+    }
+
+    #subject {
+        width: 40%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #ffcc80;
+        color: #333;
+    }
+
+    button {
+        background-color: #ff8c42;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff6f00;
+        transform: scale(1.1);
+        text-decoration: underline;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #ff6f00;
+        color: #fff;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+        margin-top: 0;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 1em;
+    }
+
+    form labelmessage {
+        font-size: 12px;
+        color: #333;
+        font-weight: normal;
+        margin-bottom: 3px;
+        display: block;
+    }
+
+    form textarea {
+        width: 50%;
+        max-width: 400px;
+        height: 30px;
+        padding: 50px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #ffcc80;
+        color: #333;
+    }
 
 
 /* モバイル対応 */
