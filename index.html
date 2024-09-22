@@ -240,11 +240,21 @@
                     window.removeEventListener('scroll', checkScroll);
                 }
             }
-
             window.addEventListener('scroll', checkScroll);
             checkScroll();
         });
 
+    window.addEventListener('scroll', function() {
+        var nav = document.querySelector('nav');
+        var scrollPosition = window.scrollY;
+
+        // スクロール位置が50px以上ならnavを表示する
+        if (scrollPosition > 50) {
+            nav.classList.add('visible');
+        } else {
+            nav.classList.remove('visible');
+        }
+    });
 
     </script>
 </body>
