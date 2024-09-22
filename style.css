@@ -527,17 +527,17 @@ nav ul li a.active {
     #subject {
         width: 90%; /* タイトルの入力欄も広げる */
     }
-    
-    /* 画像を問い合わせフォームの下に配置 */
-    .contact-section {
-    min-height: 100vh; /* 最小高さを画面いっぱいに設定 */
-   }
 
     textarea#message {
     width: calc(100% - 30px); /* 幅に余白を考慮 */
     height: 150px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box; /* Safari向けのプレフィックス */
+   }
+    
+    /* 画像を問い合わせフォームの下に配置 */
+    .contact-section {
+    min-height: 100vh; /* 最小高さを画面いっぱいに設定 */
    }
 
     .contact-image {
