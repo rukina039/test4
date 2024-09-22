@@ -1,28 +1,31 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body, html {
-    height: 100%;
-    font-family: Arial, sans-serif;
-}
+        .background {
+            position: relative;
+            height: 100vh; /* 画面の高さを100% */
+            background-image: url("images/Background_3.jpg"); /* 背景画像の相対パスに修正 */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.background {
-    position: relative;
-    height: 100vh; /* 画面の高さを100% */
-    background-image: url('Background_3.jpg'); /* ここに背景画像を指定 */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .poppins-black-italic {
+            font-family: "Poppins", sans-serif;
+            font-weight: 900;
+            font-style: italic;
+        }
 
-.title {
-    position: absolute;
-    color: white;
-    font-size: 3em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+        .title {
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-family: "Poppins", sans-serif;
+            font-weight: 900;
+            font-style: italic;
+        }
