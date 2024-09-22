@@ -23,17 +23,24 @@ body {
 }
 
 .title {
-    background: linear-gradient(90deg, #ff4500, #ffa500);
+    background: linear-gradient(90deg, #ffa500, #ff7f50, #ff4500); /* オレンジ系のグラデーション */
     -webkit-background-clip: text;
     color: transparent;
     font-size: 6rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    animation: fadeInTitle 2s ease-in-out;
+    text-shadow: 1px 1px 4px rgba(255, 165, 0, 0.6); /* 軽めのシャドウ */
+    animation: popTitle 1.5s ease-in-out infinite; /* アニメーションを適用 */
 }
 
-@keyframes fadeInTitle {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
+@keyframes popTitle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* 中央から10px上に移動 */
+    }
+    100% {
+        transform: translateY(0); /* 元に戻る */
+    }
 }
 
 /* ナビゲーションバー */
