@@ -1,4 +1,4 @@
-html ver.3
+html ver.2
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -209,72 +209,15 @@ html ver.3
 </footer>
 
 
-<!-- SwiperJS CDN -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+(function() {
+    // グローバルスコープで変数を定義
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const closeModal = document.querySelector('.close');
 
-<script>
-    // SwiperJSの初期化
-    var swiper = new Swiper('.swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 10000,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-
-    // スクロール時にプロフィールセクションが表示される処理
-    window.addEventListener('scroll', function() {
-        var profileSection = document.getElementById('profile');
-        var sectionPosition = profileSection.getBoundingClientRect().top;
-        var screenPosition = window.innerHeight / 1.3;
-
-        if (sectionPosition < screenPosition) {
-            profileSection.classList.add('active');
-        }
-    });
-
-        window.addEventListener('scroll', function() {
-            var profileSection = document.querySelector('.profile-section');
-            var contactSection = document.querySelector('.contact-section');
-            var sectionPositionProfile = profileSection.getBoundingClientRect().top;
-            var sectionPositionContact = contactSection.getBoundingClientRect().top;
-            var screenPosition = window.innerHeight / 1.5;
-
-            if (sectionPositionProfile < screenPosition) {
-                profileSection.classList.add('visible');
-            }
-
-            if (sectionPositionContact < screenPosition) {
-                contactSection.classList.add('visible');
-            }
-        });
-
-    // スクロール時にナビゲーションバーの背景色を変更
-    window.addEventListener('scroll', function() {
-        var nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-        } else {
-            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-        }
-    });
-
-// グローバルスコープで変数を定義
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDescription = document.getElementById('modal-description');
-const closeModal = document.querySelector('.close');
-
-// トピック詳細データ
-const topicDetails = {
+    // トピック詳細データ
+    const topicDetails = {
         1: {
             title: 'コンテンツ 1：Projectのダウンロード',
             description: '僕がYoutube動画で作ったTrackがダウンロードできます（【FANBOX Project File】と書いてある物）。詳しい手順はこちらです。'
@@ -301,50 +244,99 @@ const topicDetails = {
         }
     };
 
-document.addEventListener('DOMContentLoaded', function() {
-    const topics = document.querySelectorAll('.topic');
+    // モーダルを閉じる関数
+    function closeModalFunction() {
+        modal.style.visibility = 'hidden';
+        modal.style.display = 'none';
+    }
 
-    // トピックをクリックしたときの処理
-    topics.forEach(topic => {
-        topic.addEventListener('click', function() {
-            const detailId = this.getAttribute('data-detail');
-            const detail = topicDetails[detailId];
+    // スクロールハンドラー
+    function handleScroll() {
+        const scrollPosition = window.scrollY;
+        const nav = document.querySelector('nav');
+        const profileSection = document.querySelector('.profile-section');
+        const contactSection = document.querySelector('.contact-section');
+        const screenPosition = window.innerHeight / 1.5;
 
-            modalTitle.textContent = detail.title;
-            modalDescription.textContent = detail.description;
-
-            modal.style.visibility = 'visible';
-            modal.style.display = 'flex'; // モーダルを表示
-        });
-    });
-
-    // モーダルを閉じる処理
-    closeModal.addEventListener('click', closeModalFunction);
-
-    // モーダルの外側をクリックしても閉じる
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            closeModalFunction();
-        }
-    });
-});
-
-// モーダルを閉じる関数
-function closeModalFunction() {
-    modal.style.visibility = 'hidden';
-    modal.style.display = 'none';
-}
-    window.addEventListener('scroll', function() {
-        var nav = document.querySelector('nav');
-        var scrollPosition = window.scrollY;
-
-        // スクロール位置が50px以上ならnavを表示する
+        // ナビゲーションバーの背景色変更
         if (scrollPosition > 50) {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
             nav.classList.add('visible');
         } else {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
             nav.classList.remove('visible');
         }
+
+        // プロフィールセクションのアニメーション
+        if (profileSection && profileSection.getBoundingClientRect().top < screenPosition) {
+            profileSection.classList.add('visible');
+        }
+
+        // コンタクトセクションのアニメーション
+        if (contactSection && contactSection.getBoundingClientRect().top < screenPosition) {
+            contactSection.classList.add('visible');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // SwiperJSの初期化
+        new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 10000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        const topics = document.querySelectorAll('.topic');
+
+        // トピックをクリックしたときの処理
+        topics.forEach(topic => {
+            topic.addEventListener('click', function() {
+                const detailId = this.getAttribute('data-detail');
+                const detail = topicDetails[detailId];
+
+                modalTitle.textContent = detail.title;
+                modalDescription.textContent = detail.description;
+
+                modal.style.visibility = 'visible';
+                modal.style.display = 'flex'; // モーダルを表示
+            });
+        });
+
+        // モーダルを閉じる処理
+        closeModal.addEventListener('click', closeModalFunction);
+
+        // モーダルの外側をクリックしても閉じる
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                closeModalFunction();
+            }
+        });
+
+        // スクロールイベントリスナーの最適化
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // 初期表示時にもスクロールハンドラーを実行
+        handleScroll();
     });
+})();
 
     </script>
 </body>
