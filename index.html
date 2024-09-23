@@ -1,4 +1,4 @@
-html ver.3
+html ver.2
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -327,7 +327,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
+                   window.removeEventListener('scroll', checkScroll);
+                }
+            }
             window.addEventListener('scroll', checkScroll);
             checkScroll();
         });
