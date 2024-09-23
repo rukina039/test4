@@ -1,4 +1,4 @@
-html ver.2
+html ver.3
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -267,10 +267,14 @@ html ver.2
         }
     });
 
-// グローバルスコープで変数を定義 const modal = document.getElementById('modal'); const modalTitle =document.getElementById('modal-title'); const modalDescription = document.getElementById('modal-description'); constcloseModal = document.querySelector('.close');
+// グローバルスコープで変数を定義
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDescription = document.getElementById('modal-description');
+const closeModal = document.querySelector('.close');
 
-    // トピック詳細データ
-    const topicDetails = {
+// トピック詳細データ
+const topicDetails = {
         1: {
             title: 'コンテンツ 1：Projectのダウンロード',
             description: '僕がYoutube動画で作ったTrackがダウンロードできます（【FANBOX Project File】と書いてある物）。詳しい手順はこちらです。'
@@ -297,16 +301,39 @@ html ver.2
         }
     };
 
-document.addEventListener('DOMContentLoaded', function() { const topics = document.querySelectorAll('.topic'); 
+document.addEventListener('DOMContentLoaded', function() {
+    const topics = document.querySelectorAll('.topic');
 
-// トピックをクリックしたときの処理 topics.forEach(topic => { topic.addEventListener('click', function() { const detailId = this.getAttribute('data-detail'); const detail = topicDetails[detailId]; modalTitle.textContent = detail.title;modalDescription.textContent = detail.description; modal.style.visibility = 'visible'; modal.style.display = 'flex'; // モーダルを表示 }); }); 
+    // トピックをクリックしたときの処理
+    topics.forEach(topic => {
+        topic.addEventListener('click', function() {
+            const detailId = this.getAttribute('data-detail');
+            const detail = topicDetails[detailId];
 
-// モーダルを閉じる処理 closeModal.addEventListener('click', closeModalFunction); 
+            modalTitle.textContent = detail.title;
+            modalDescription.textContent = detail.description;
 
-// モーダルの外側をクリックしても閉じる window.addEventListener('click', function(event) { if (event.target == modal) {closeModalFunction(); } }); }); 
+            modal.style.visibility = 'visible';
+            modal.style.display = 'flex'; // モーダルを表示
+        });
+    });
 
-// モーダルを閉じる関数 function closeModalFunction() { modal.style.visibility ='hidden'; modal.style.display = 'none'; }
+    // モーダルを閉じる処理
+    closeModal.addEventListener('click', closeModalFunction);
 
+    // モーダルの外側をクリックしても閉じる
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            closeModalFunction();
+        }
+    });
+});
+
+// モーダルを閉じる関数
+function closeModalFunction() {
+    modal.style.visibility = 'hidden';
+    modal.style.display = 'none';
+}
     window.addEventListener('scroll', function() {
         var nav = document.querySelector('nav');
         var scrollPosition = window.scrollY;
