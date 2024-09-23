@@ -1,3 +1,5 @@
+css ver.2
+
 <style>
 /* 基本設定 */
 body {
@@ -381,7 +383,7 @@ nav ul li a.active {
 .modal {
     display: flex; /* フレックスボックスとして表示 */
     visibility: hidden; /* 初期状態は非表示 */
-    position: fixed;
+    position: relative;
     z-index: 1000; /* より高い値に設定 */
     left: 0;
     top: 0;
