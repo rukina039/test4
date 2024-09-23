@@ -1,4 +1,4 @@
-html ver.2
+html ver.3
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -266,15 +266,8 @@ html ver.2
         }
     });
 
-<!-- ポップアップ用モーダル -->
-<div id="modal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3 id="modal-title"></h3>
-        <p id="modal-description"></p>
-    </div>
-</div>
-
+document.addEventListener('DOMContentLoaded', function() {
+    const topics = document.querySelectorAll('.topic');
     const modal = document.getElementById('modal');
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
@@ -308,39 +301,31 @@ html ver.2
         }
     };
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const topics = document.querySelectorAll('.topic');
+    // トピックをクリックしたときの処理
+    topics.forEach(topic => {
+        topic.addEventListener('click', function() {
+            const detailId = this.getAttribute('data-detail');
+            const detail = topicDetails[detailId];
 
-        // トピックをクリックしたときの処理
-        topics.forEach(topic => {
-            topic.addEventListener('click', function() {
-                const detailId = this.getAttribute('data-detail');
-                const detail = topicDetails[detailId];
+            modalTitle.textContent = detail.title;
+            modalDescription.textContent = detail.description;
 
-                modalTitle.textContent = detail.title;
-                modalDescription.textContent = detail.description;
-
-                modal.style.display = 'flex';  // displayを変更してモーダルを表示
-                modal.style.visibility = 'visible';
-            });
-        });
-
-        // モーダルを閉じる処理
-        closeModal.addEventListener('click', closeModalFunction);
-
-        // モーダルの外側をクリックしても閉じる
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                closeModalFunction();
-            }
+            modal.style.display = 'flex'; // モーダルを表示
         });
     });
 
-    // モーダルを閉じる関数
-    function closeModalFunction() {
-        modal.style.visibility = 'hidden';
-        modal.style.display = 'none';  // モーダルを非表示にする
-    }
+    // モーダルを閉じる処理
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // モーダルの外側をクリックしても閉じる
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
 
     window.addEventListener('scroll', function() {
         var nav = document.querySelector('nav');
