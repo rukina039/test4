@@ -380,7 +380,7 @@ nav ul li a.active {
 
 /* モーダル全体のスタイル */
 .modal {
-    display: none; /* デフォルトは非表示 */
+    display: fixed; /* デフォルトは非表示 */
     position: fixed;
     z-index: 1;
     left: 0;
