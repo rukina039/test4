@@ -388,38 +388,6 @@ nav ul li a.active {
     display: block;
 }
 
-/* h3の文字色を調整 */
-.topic h3 {
-    font-size: 2em;
-    color: #333; /* 濃いグレーに設定して背景に対して見やすくする */
-    margin-bottom: 15px;
-    position: relative;
-    background: none; /* 背景グラデーションを削除 */
-}
-
-.topic h3::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(to right, #ff8c00, #ff6f00);
-    margin-top: 10px;
-}
-
-/* pの文字色も調整 */
-.topic p {
-    font-size: 1.3em;
-    color: #444; /* 少し濃いめのグレーに設定 */
-    line-height: 1.6;
-}
-
-/* リンクの色も調整 */
-.topic a {
-    font-size: 1.3em;
-    color: #ff4500; /* リンクはアクセントとして濃いオレンジ */
-    line-height: 1.6;
-}
-
 .contact-section {
     display: flex;
     background-color: rgba(255, 166, 77, 0.6); /* topicのグラデーションの最も薄い色に近い色を設定 */
@@ -671,4 +639,5 @@ nav ul li a.active {
         font-size: 0.9em; /* フッターの文字サイズを小さく */
     }
 }
+
 </style>
