@@ -211,20 +211,77 @@ nav ul li a.active {
 }
 
 
-/* 横長の画像セクション */
-.wide-image-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-}
+        /* コメント全体のレイアウト */
+        .comment-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
 
-.wide-image-section img {
-    width: 90%; /* 画像の幅を調整 */
-    height: auto; /* 高さは自動調整 */
-    border-radius: 10px; /* 角を少し丸める */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影をつける */
-}
+        /* 左側のコメントのレイアウト */
+        .comment-container.left {
+            flex-direction: row;
+        }
+
+        /* 右側のコメントのレイアウト */
+        .comment-container.right {
+            flex-direction: row-reverse;
+        }
+
+        /* アイコンのスタイル */
+        .commenter-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #333;
+            margin: 0 15px;
+        }
+
+        .commenter-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        /* 吹き出しコメントボックス */
+        .comment-box {
+            position: relative;
+            background-color: #ffa500;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 吹き出しの三角形を左に表示 */
+        .comment-box.left::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: #ffa500;
+            border-left: 0;
+        }
+
+        /* 吹き出しの三角形を右に表示 */
+        .comment-box.right::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -15px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: #ffa500;
+            border-right: 0;
+        }
+
 
 .topics-section {
     max-width: 1800px;
@@ -506,11 +563,6 @@ nav ul li a.active {
         font-size: 1rem; /* リンクの文字サイズを調整 */
     }
 
-    /* 横長の画像の幅調整 */
-    .wide-image-section img {
-        width: 100%; /* 画像の幅を全体に広げる */
-    }
-
     /* トピックセクションの調整 */
     .topics-container {
         grid-template-columns: 1fr; /* 1カラム表示に変更 */
@@ -564,3 +616,5 @@ nav ul li a.active {
         font-size: 0.9em; /* フッターの文字サイズを小さく */
     }
 }
+
+</style>
