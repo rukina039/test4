@@ -1,4 +1,4 @@
-html ver.2
+html ver.3
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -274,6 +274,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modal-description');
     const closeModal = document.querySelector('.close');
 
+// グローバルスコープで変数を定義 const modal = document.getElementById('modal'); const modalTitle =document.getElementById('modal-title'); const modalDescription = document.getElementById('modal-description'); constcloseModal = document.querySelector('.close');
+
     // トピック詳細データ
     const topicDetails = {
         1: {
@@ -302,31 +304,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // トピックをクリックしたときの処理
-    topics.forEach(topic => {
-        topic.addEventListener('click', function() {
-            const detailId = this.getAttribute('data-detail');
-            const detail = topicDetails[detailId];
+document.addEventListener('DOMContentLoaded', function() { const topics = document.querySelectorAll('.topic'); 
 
-            modalTitle.textContent = detail.title;
-            modalDescription.textContent = detail.description;
+// トピックをクリックしたときの処理 topics.forEach(topic => { topic.addEventListener('click', function() { const detailId = this.getAttribute('data-detail'); const detail = topicDetails[detailId]; modalTitle.textContent = detail.title;modalDescription.textContent = detail.description; modal.style.visibility = 'visible'; modal.style.display = 'flex'; // モーダルを表示 }); }); 
 
-            modal.style.display = 'flex'; // モーダルを表示
-        });
-    });
+// モーダルを閉じる処理 closeModal.addEventListener('click', closeModalFunction); 
 
-    // モーダルを閉じる処理
-    closeModal.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
+// モーダルの外側をクリックしても閉じる window.addEventListener('click', function(event) { if (event.target == modal) {closeModalFunction(); } }); }); 
 
-    // モーダルの外側をクリックしても閉じる
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    });
-});
+// モーダルを閉じる関数 function closeModalFunction() { modal.style.visibility ='hidden'; modal.style.display = 'none'; }
 
     window.addEventListener('scroll', function() {
         var nav = document.querySelector('nav');
