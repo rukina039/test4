@@ -1,3 +1,5 @@
+css ver.2
+
 <style>
 /* 基本設定 */
 body {
@@ -346,6 +348,46 @@ nav ul li a.active {
 .topic:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.topic h3 {
+    font-size: 2em;
+    color: #333; /* 濃いグレーに設定して背景に対して見やすくする */
+    margin-bottom: 15px;
+    position: relative;
+    background: none; /* 背景グラデーションを削除 */
+}
+
+.topic h3::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #ff8c00, #ff6f00);
+    margin-top: 10px;
+}
+
+.topic p {
+    font-size: 1.3em;
+    color: #444; /* 少し濃いめのグレーに設定 */
+    line-height: 1.6;
+}
+
+.topic a {
+    font-size: 1.3em;
+    color: #ff4500; /* リンクはアクセントとして濃いオレンジ */
+    line-height: 1.6;
+}
+
+.topic-details {
+    display: none;
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.topic.active .topic-details {
+    display: block;
 }
 
 /* h3の文字色を調整 */
