@@ -283,13 +283,11 @@ nav ul li a.active {
         }
 
 
-/* トピックスセクション全体のスタイル */
+/* トピックスセクション */
 .topics-section {
-    max-width: 1800px;
-    margin: 50px auto;
-    padding: 30px;
-    background: linear-gradient(135deg, #ff8c42, #ffe5b4); /* オレンジ系グラデーション */
-    border-radius: 5px;
+    background: linear-gradient(135deg, #ff8c42, #ffe5b4);
+    padding: 50px;
+    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -298,126 +296,148 @@ nav ul li a.active {
     color: #333;
     text-align: center;
     margin-bottom: 30px;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.topics-title.visible {
-    opacity: 1;
-    transform: translateY(0);
+    animation: popTitle 1.5s ease-in-out infinite;
 }
 
 .topics-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr); /* 2列のレイアウト */
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
 }
 
-.topic {
-    background: linear-gradient(45deg, rgba(255, 155, 66, 0.1), rgba(255, 140, 66, 0.3), rgba(255, 166, 77, 0.3)); /* 濃い部分を少し明るく調整 */
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    position: relative;
-    overflow: hidden;
+.topic-title {
+    font-size: 1.5rem;
+    color: #ff4500;
+    background-color: #ffcc80;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: popTopic 1.5s ease-in-out infinite;
 }
 
-.topic::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
-    transform: rotate(30deg);
-    pointer-events: none;
+@keyframes popTopic {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
-.topic.visible {
-    opacity: 1;
-    transform: translateY(0);
+.topic-title:hover {
+    background-color: #ff8c42;
+    transform: scale(1.1);
 }
 
-.topic:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.topic h3 {
-    font-size: 2em;
-    color: #333; /* 濃いグレーに設定して背景に対して見やすくする */
-    margin-bottom: 15px;
-    position: relative;
-    background: none; /* 背景グラデーションを削除 */
-}
-
-.topic h3::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(to right, #ff8c00, #ff6f00);
-    margin-top: 10px;
-}
-
-.topic p {
-    font-size: 1.3em;
-    color: #444; /* 少し濃いめのグレーに設定 */
-    line-height: 1.6;
-}
-
-.topic a {
-    font-size: 1.3em;
-    color: #ff4500; /* リンクはアクセントとして濃いオレンジ */
-    line-height: 1.6;
-}
-
+/* モーダルの基本スタイル */
 .modal {
-    display: flex; /* フレックスボックスとして表示 */
-    visibility: hidden; /* 初期状態は非表示 */
-    position: relative;
-    z-index: 1000; /* より高い値に設定 */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-/* モーダルのコンテンツ */
+.modal.active {
+    display: block;
+    opacity: 1;
+}
+
 .modal-content {
-    background-color: #fff;
-    margin: auto;
+    background: linear-gradient(135deg, #ff8c42, #ffe5b4);
+    margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 80%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.5s ease-out;
 }
 
-/* 閉じるボタンのスタイル */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* モーダルのヘッダー */
+.modal-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    background: linear-gradient(90deg, #ffa500, #ff7f50, #ff4500);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 1px 1px 4px rgba(255, 165, 0, 0.6);
+}
+
+/* モーダルの本文 */
+.modal-body p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    color: #444;
+    line-height: 1.6;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* モーダルのフッター */
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal-action {
+    background-color: #ff4500;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-action:hover {
+    background-color: #ff7f50;
+    transform: scale(1.1);
+}
+
+/* 閉じるボタン */
 .close {
-    color: #aaa;
+    color: #fff;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
     cursor: pointer;
 }
+
+.close:hover {
+    color: #ff4500;
+}
+
 
 .contact-section {
     display: flex;
@@ -601,21 +621,6 @@ nav ul li a.active {
     .social-links ul li a {
         font-size: 1rem; /* リンクの文字サイズを調整 */
     }
-
-        /* アイコンのスタイル */
-        .commenter-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #333;
-            margin: 0 15px;
-        }
-
-        .commenter-icon img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
 
     /* トピックセクションの調整 */
     .topics-container {
