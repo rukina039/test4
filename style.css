@@ -377,17 +377,6 @@ nav ul li a.active {
     line-height: 1.6;
 }
 
-.topic-details {
-    display: none;
-    margin-top: 10px;
-    font-size: 1.1em;
-    color: #333;
-}
-
-.topic.active .topic-details {
-    display: block;
-}
-
 /* モーダル全体のスタイル */
 .modal {
     display: none; /* デフォルトは非表示 */
