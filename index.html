@@ -1,4 +1,4 @@
-html ver.2
+html ver.3
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -134,51 +134,41 @@ html ver.2
 <section id="topics-section" class="topics-section">
     <h2 class="topics-title">Isご紹介(FANBOX)</h2>
     <div class="topics-container">
-        <div class="topic">
+        <div class="topic" data-detail="1">
             <h3>コンテンツ 1：Projectのダウンロード</h3>
             <p>僕がYoutube動画で作ったTrackがダウンロードできます（【FANBOX Project File】と書いてある物）</p>
-            <div class="topic-details">
-                <p>ここにダウンロードリンクや詳細な説明が表示されます。</p>
-            </div>
         </div>
-        <div class="topic">
+        <div class="topic" data-detail="2">
             <h3>コンテンツ 2：FANBOX限定のSample Pack & Synthe Presetsのダウンロード</h3>
             <p>不定期にSample Pack と Synthe PresetsをFANBOX限定で配布します。</p>
-            <div class="topic-details">
-                <p>ここにSample Packの詳細が表示されます。</p>
-            </div>
         </div>
-        <div class="topic">
+        <div class="topic" data-detail="3">
             <h3>コンテンツ 3：FANBOX限定のTrack制作のチュートリアル動画</h3>
             <p>FANBOX限定で僕が作ったTrackの解説動画が見れます。Youtube動画よりさらに詳しく解説します。</p>
-            <div class="topic-details">
-                <p>チュートリアル動画の詳細な説明が表示されます。</p>
-            </div>
         </div>
-        <div class="topic">
+        <div class="topic" data-detail="4">
             <h3>コンテンツ 4：音楽制作に関する記事</h3>
             <p>音楽制作に役立つ記事や、機材紹介、ブログなどを見る事ができます。</p>
-            <div class="topic-details">
-                <p>音楽制作に関する詳細な記事内容が表示されます。</p>
-            </div>
         </div>
-        <div class="topic">
+        <div class="topic" data-detail="5">
             <h3>コンテンツ 5：Serverへ招待</h3>
-            <p>Discordサーバーへ招待します。クリエイターが交流できる場を作りました。お互いに学び合ったり、制作の相談をしたりすることができます。</p>
-            <div class="topic-details">
-                <p>Discordサーバーへの参加方法や詳細が表示されます。</p>
-            </div>
+            <p>Discordサーバーへ招待します。クリエイターが交流できる場を作りました。</p>
         </div>
-        <div class="topic">
+        <div class="topic" data-detail="6">
             <h3>皆さんに喜んで貰えるように全力でサポートします！</h3>
-            <p>サポートしてもらえたらすごく嬉しいです！ここだけの情報や限定コンテンツをお届けしており、もっと良いものを作れるよう頑張ります。ぜひよろしくお願いします！</p>
-            <div class="topic-details">
-                <p>サポート内容に関する詳しい説明が表示されます。</p>
-            </div>
-            <a href="httk">FANBOXこちら</a>
+            <p>サポートしてもらえたらすごく嬉しいです！ぜひよろしくお願いします！</p>
         </div>
     </div>
 </section>
+
+<!-- ポップアップ用モーダル -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+    </div>
+</div>
 
     <!-- 問い合わせセクション -->
     <section id="contact" class="contact-section">
@@ -278,29 +268,66 @@ html ver.2
     });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const topicsSection = document.querySelector('.topics-section');
-    const topicsTitle = document.querySelector('.topics-title');
     const topics = document.querySelectorAll('.topic');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const closeModal = document.querySelector('.close');
 
-    function checkScroll() {
-        const triggerBottom = window.innerHeight / 5 * 4;
-        const sectionTop = topicsSection.getBoundingClientRect().top;
-
-        if (sectionTop < triggerBottom) {
-            topicsTitle.classList.add('visible');
-            topics.forEach((topic, index) => {
-                setTimeout(() => {
-                    topic.classList.add('visible');
-                }, index * 200);
-            });
-            window.removeEventListener('scroll', checkScroll);
+    // トピック詳細データ
+    const topicDetails = {
+        1: {
+            title: 'コンテンツ 1：Projectのダウンロード',
+            description: '僕がYoutube動画で作ったTrackがダウンロードできます（【FANBOX Project File】と書いてある物）。詳しい手順はこちらです。'
+        },
+        2: {
+            title: 'コンテンツ 2：FANBOX限定のSample Pack & Synthe Presetsのダウンロード',
+            description: '不定期にSample Pack と Synthe PresetsをFANBOX限定で配布します。新しいサウンドの使い方はこちらです。'
+        },
+        3: {
+            title: 'コンテンツ 3：FANBOX限定のTrack制作のチュートリアル動画',
+            description: 'FANBOX限定で僕が作ったTrackの解説動画が見れます。Youtube動画よりさらに詳しく解説します。'
+        },
+        4: {
+            title: 'コンテンツ 4：音楽制作に関する記事',
+            description: '音楽制作に役立つ記事や、機材紹介、ブログなどを見る事ができます。'
+        },
+        5: {
+            title: 'コンテンツ 5：Serverへ招待',
+            description: 'Discordサーバーへ招待します。クリエイターが交流できる場を作りました。お互いに学び合ったり、制作の相談をしたりすることができます。'
+        },
+        6: {
+            title: '皆さんに喜んで貰えるように全力でサポートします！',
+            description: 'サポートしてもらえたらすごく嬉しいです！ここだけの情報や限定コンテンツをお届けしており、もっと良いものを作れるよう頑張ります。ぜひよろしくお願いします！'
         }
-    }
+    };
+
+    // トピックをクリックしたときの処理
     topics.forEach(topic => {
-        topic.addEventListener('click', () => {
-            topic.classList.toggle('active'); // 詳細の表示・非表示を切り替える
+        topic.addEventListener('click', function() {
+            const detailId = this.getAttribute('data-detail');
+            const detail = topicDetails[detailId];
+
+            modalTitle.textContent = detail.title;
+            modalDescription.textContent = detail.description;
+
+            modal.style.display = 'flex'; // モーダルを表示
         });
     });
+
+    // モーダルを閉じる処理
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // モーダルの外側をクリックしても閉じる
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+
             window.addEventListener('scroll', checkScroll);
             checkScroll();
         });
