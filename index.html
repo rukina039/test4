@@ -1,5 +1,3 @@
-html ver.3
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,7 +11,7 @@ html ver.3
     <link rel="stylesheet" href="style.css">
 
 </head>
-    
+
 <body>
     <div class="background" style="background-color: #d3d3d3;">
         <h1 class="title">Welcome Ishida Music</h1>
@@ -31,8 +29,8 @@ html ver.3
     <section class="profile-section" id="profile">
         <div class="profile-text">
             <h2>プロフィール</h2>
-            <p>イシダ テツヒロ</p>
-            <p>1997年11月10日生まれ。</p>
+            <p>イシロ</p>
+            <p>1日生まれ。</p>
             <p>作編曲家、Track maker。</p>
             <p>音楽専門学校を卒業後、作編曲家として活動。</p>
             <p>Youtubeでは自身のオリジナル曲や音楽制作に役立つチュートリアル動画を投稿。</p>
@@ -49,10 +47,10 @@ html ver.3
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <ul>
-    <li><a href="https://www.instagram.com/ishida_tetsuhiro" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-<li><a href="https://twitter.com/tetsuhiro4444" target="_blank">
+    <li><a href="https://wwwiro" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+<li><a href="https://twitter4444" target="_blank">
     <i class="fa-x"></i> (旧Twitter)</a></li>
-    <li><a href="https://www.youtube.com/channel/UCpI9-Zb9cgYSUks_iouuA_w/featured"><i class="fab fa-youtube"></i> YouTube</a></li>
+    <li><a href="https://www.youtube.comured"><i class="fab fa-youtube"></i> YouTube</a></li>
 </ul>
     </section>
 
@@ -63,22 +61,22 @@ html ver.3
 
             <!-- youtube埋め込みスライド -->
             <div class="swiper-slide">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/XgM6GtHD3ig?si=vA7Z-Vn2V2Du0HRR&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/XgM6GtHD3ig?si=vA7Z-Vn2V2Du0HRR&amp;start=19" title="YouTube video player" frame-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- youtube埋め込みスライド -->
             <div class="swiper-slide">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/XsaHCe73H0o?si=zVoCNetUhMQWpC4t&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://w=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; enc="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- youtube埋め込みスライド -->
             <div class="swiper-slide">
-                <iframe src="https://www.youtube.com/embed/1KTBEvW8LMc?si=XuxunhSWMw6Mg_ba" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/1KTBEvW8LMc?si=-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="stric></iframe>
             </div>
 
             <!-- youtube埋め込みスライド -->
             <div class="swiper-slide">
-                <iframe src="https://www.youtube.com/embed/n_K9PfgQQko?si=bm6LjQMTamAKEZh4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.yo></iframe>
             </div>
 
         </div>
@@ -125,8 +123,8 @@ html ver.3
         <!-- 吹き出しコメントボックス -->
         <div class="comment-box left">
             <p>え！知らない⁉</p>
-            <p>「Ishida Studio」を知らないなんて損をしているかも</p>
-            <p>それでは、「Ishida Studio」についてご紹介しますね</p>
+            <p>「Is Studio」を知らないなんて損をしているかも</p>
+            <p>それでは、「」についてご紹介しますね</p>
 
         </div>
     </div>
@@ -213,8 +211,69 @@ html ver.3
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
 <script>
-(function() {
-    // グローバルスコープで変数を定義
+    // SwiperJSの初期化
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 10000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // スクロール時にプロフィールセクションが表示される処理
+    window.addEventListener('scroll', function() {
+        var profileSection = document.getElementById('profile');
+        var sectionPosition = profileSection.getBoundingClientRect().top;
+        var screenPosition = window.innerHeight / 1.3;
+
+        if (sectionPosition < screenPosition) {
+            profileSection.classList.add('active');
+        }
+    });
+
+        window.addEventListener('scroll', function() {
+            var profileSection = document.querySelector('.profile-section');
+            var contactSection = document.querySelector('.contact-section');
+            var sectionPositionProfile = profileSection.getBoundingClientRect().top;
+            var sectionPositionContact = contactSection.getBoundingClientRect().top;
+            var screenPosition = window.innerHeight / 1.5;
+
+            if (sectionPositionProfile < screenPosition) {
+                profileSection.classList.add('visible');
+            }
+
+            if (sectionPositionContact < screenPosition) {
+                contactSection.classList.add('visible');
+            }
+        });
+
+    // スクロール時にナビゲーションバーの背景色を変更
+    window.addEventListener('scroll', function() {
+        var nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        } else {
+            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        }
+    });
+
+<!-- ポップアップ用モーダル -->
+<div id="modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+    </div>
+</div>
+
+<script>
     const modal = document.getElementById('modal');
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
@@ -248,57 +307,7 @@ html ver.3
         }
     };
 
-    // モーダルを閉じる関数
-    function closeModalFunction() {
-        modal.style.visibility = 'hidden';
-        modal.style.display = 'none';
-    }
-
-    // スクロールハンドラー
-    function handleScroll() {
-        const scrollPosition = window.scrollY;
-        const nav = document.querySelector('nav');
-        const profileSection = document.querySelector('.profile-section');
-        const contactSection = document.querySelector('.contact-section');
-        const screenPosition = window.innerHeight / 1.5;
-
-        // ナビゲーションバーの背景色変更
-        if (scrollPosition > 50) {
-            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-            nav.classList.add('visible');
-        } else {
-            nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-            nav.classList.remove('visible');
-        }
-
-        // プロフィールセクションのアニメーション
-        if (profileSection && profileSection.getBoundingClientRect().top < screenPosition) {
-            profileSection.classList.add('visible');
-        }
-
-        // コンタクトセクションのアニメーション
-        if (contactSection && contactSection.getBoundingClientRect().top < screenPosition) {
-            contactSection.classList.add('visible');
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
-        // SwiperJSの初期化
-        new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: {
-                delay: 10000,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-
         const topics = document.querySelectorAll('.topic');
 
         // トピックをクリックしたときの処理
@@ -310,8 +319,8 @@ html ver.3
                 modalTitle.textContent = detail.title;
                 modalDescription.textContent = detail.description;
 
+                modal.style.display = 'flex';  // displayを変更してモーダルを表示
                 modal.style.visibility = 'visible';
-                modal.style.display = 'flex'; // モーダルを表示
             });
         });
 
@@ -324,23 +333,25 @@ html ver.3
                 closeModalFunction();
             }
         });
-
-        // スクロールイベントリスナーの最適化
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        // 初期表示時にもスクロールハンドラーを実行
-        handleScroll();
     });
-})();
+
+    // モーダルを閉じる関数
+    function closeModalFunction() {
+        modal.style.visibility = 'hidden';
+        modal.style.display = 'none';  // モーダルを非表示にする
+    }
+
+    window.addEventListener('scroll', function() {
+        var nav = document.querySelector('nav');
+        var scrollPosition = window.scrollY;
+
+        // スクロール位置が50px以上ならnavを表示する
+        if (scrollPosition > 50) {
+            nav.classList.add('visible');
+        } else {
+            nav.classList.remove('visible');
+        }
+    });
 
     </script>
 </body>
