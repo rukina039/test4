@@ -330,11 +330,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalBtns = document.querySelectorAll('[id^="modalBtn"]');
     const modals = document.querySelectorAll('.modal');
     const closeBtns = document.querySelectorAll('.close');
+    const nav = document.querySelector('nav'); // navを取得
 
-    // ボタンクリックでモーダルを開く
+    // モーダルを開く際にnavを非表示にする
     modalBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            modals[index].classList.add('active'); // モーダル表示
+            modals[index].classList.add('active'); // モーダルを表示
+            nav.classList.add('hidden'); // navを非表示
         });
     });
 
@@ -342,7 +344,8 @@ document.addEventListener('DOMContentLoaded', function() {
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetModal = btn.getAttribute('data-target');
-            document.getElementById(targetModal).classList.remove('active'); // モーダル非表示
+            document.getElementById(targetModal).classList.remove('active'); // モーダルを非表示
+            nav.classList.remove('hidden'); // navを再表示
         });
     });
 
@@ -350,13 +353,12 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('click', (event) => {
         modals.forEach(modal => {
             if (event.target === modal) {
-                modal.classList.remove('active'); // モーダル非表示
+                modal.classList.remove('active'); // モーダルを非表示
+                nav.classList.remove('hidden'); // navを再表示
             }
         });
     });
 });
-
-
 
     window.addEventListener('scroll', function() {
         var nav = document.querySelector('nav');
