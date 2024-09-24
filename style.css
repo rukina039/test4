@@ -580,17 +580,14 @@ nav ul li a.active {
     nav {
         padding: 5px 10px; /* パディングを小さく */
     }
-    /* navの2列レイアウト */
     nav ul {
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-    nav ul li {
-        width: 40%; /* 2列にするため、幅を50%未満に */
-        margin: 5px 0;
+        flex-wrap: wrap; /* ラップして2列になるように */
+        align-items: flex-start;
     }
-    
+    nav ul li {
+        margin: 5px 0; /* リスト項目のマージンを縮小 */
+    }
     nav ul li a {
         font-size: 0.75rem; /* フォントサイズを縮小 */
     }
