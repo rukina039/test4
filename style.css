@@ -579,13 +579,26 @@ nav ul li a.active {
 /* モバイル対応 */
 @media screen and (max-width: 768px) {
     /* ナビゲーションバー */
+    nav {
+        padding: 5px 10px; /* パディングを小さく */
+    }
     nav ul {
         flex-direction: column;
         align-items: flex-start;
     }
     nav ul li {
-        margin: 10px 0;
+        margin: 5px 0; /* リスト項目のマージンを縮小 */
     }
+    nav ul li a {
+        font-size: 0.75rem; /* フォントサイズを縮小 */
+    }
+
+    /* ナビゲーションバー */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 
     /* タイトルサイズ調整 */
     .title {
