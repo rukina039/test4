@@ -585,8 +585,8 @@ nav ul li a.active {
     /* navの2列レイアウト */
     nav ul {
         flex-direction: row;
-        flex-wrap: wrap; /* ラップして2列になるように */
-        justify-content: space-between; /* 余白を均等に */
+        justify-content:  flex-end; /* 余白を均等に */
+        grid-template-columns: repeat(2, 1fr);
     }
     nav ul li {
         width: 48%; /* 2列にするため、幅を50%未満に */
