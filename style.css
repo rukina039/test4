@@ -582,13 +582,17 @@ nav ul li a.active {
     nav {
         padding: 5px 10px; /* パディングを小さく */
     }
+    /* navの2列レイアウト */
     nav ul {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap; /* ラップして2列になるように */
+        justify-content: space-between; /* 余白を均等に */
     }
     nav ul li {
-        margin: 5px 0; /* リスト項目のマージンを縮小 */
+        width: 48%; /* 2列にするため、幅を50%未満に */
+        margin: 5px 0;
     }
+    
     nav ul li a {
         font-size: 0.75rem; /* フォントサイズを縮小 */
     }
@@ -689,4 +693,30 @@ nav ul li a.active {
     }
 }
 
+    /* モーダルが開いている時、navを非表示にする */
+    .modal.active + nav {
+        display: none;
+    }
+    
+    /* navが開いている時にモーダルを開くとnavを非表示にする */
+    nav.hidden {
+        display: none;
+    }
+}
+
+/* モーダルの外側をクリックしたときに閉じる処理 */
+.modal.active {
+    display: block;
+    opacity: 1;
+}
+
+/* モーダル外クリック時に閉じる */
+window.addEventListener('click', (event) => {
+    modals.forEach(modal => {
+        if (event.target === modal || event.target.classList.contains('modal')) {
+            modal.classList.remove('active');
+            nav.classList.remove('hidden'); // navを再表示
+        }
+    });
+});
 </style>
