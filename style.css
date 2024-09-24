@@ -574,8 +574,6 @@ nav ul li a.active {
         color: #333;
     }
 
-
-/* モバイル対応 */
 /* モバイル対応 */
 @media screen and (max-width: 768px) {
     /* ナビゲーションバー */
@@ -585,7 +583,8 @@ nav ul li a.active {
     /* navの2列レイアウト */
     nav ul {
         flex-direction: row;
-        justify-content:  flex-end; /* 余白を均等に */
+        flex-wrap: wrap;
+        justify-content: space-between;
         grid-template-columns: repeat(2, 1fr);
     }
     nav ul li {
