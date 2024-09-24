@@ -326,6 +326,7 @@
             nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
         }
     });
+    
 document.addEventListener('DOMContentLoaded', function() {
     const modalBtns = document.querySelectorAll('[id^="modalBtn"]');
     const modals = document.querySelectorAll('.modal');
@@ -359,18 +360,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-    window.addEventListener('scroll', function() {
-        var nav = document.querySelector('nav');
-        var scrollPosition = window.scrollY;
-
-        // スクロール位置が50px以上ならnavを表示する
-        if (scrollPosition > 50) {
-            nav.classList.add('visible');
-        } else {
-            nav.classList.remove('visible');
-        }
-    });
 
     </script>
 </body>
