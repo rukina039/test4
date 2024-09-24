@@ -595,12 +595,6 @@ nav ul li a.active {
         font-size: 0.75rem; /* フォントサイズを縮小 */
     }
 
-    /* ナビゲーションバー */
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
     /* タイトルサイズ調整 */
     .title {
         font-size: 3rem; /* タイトルのサイズを小さく */
