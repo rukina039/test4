@@ -1,3 +1,5 @@
+@mobileにて、モーダルを開いた際に、どこかをタップしても閉じないので、閉じるようにしてほしい。また、スマホ版のnavは２列にしてほしい。また、スマホ版のnavはモーダルを開いているときは非表示にしてほしい。
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -327,47 +329,38 @@
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const modalBtns = document.querySelectorAll('[id^="modalBtn"]');
-        const modals = document.querySelectorAll('.modal');
-        const closeBtns = document.querySelectorAll('.close');
+document.addEventListener('DOMContentLoaded', function() {
+    const modalBtns = document.querySelectorAll('[id^="modalBtn"]');
+    const modals = document.querySelectorAll('.modal');
+    const closeBtns = document.querySelectorAll('.close');
 
-        // ボタンクリックでモーダルを開く
-        modalBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                modals[index].classList.add('active'); // モーダル表示
-                document.querySelector('nav').classList.add('hide'); // navを非表示
-            });
-        });
-
-        // 閉じるボタンでモーダルを閉じる
-        closeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetModal = btn.getAttribute('data-target');
-                document.getElementById(targetModal).classList.remove('active'); // モーダル非表示
-                document.querySelector('nav').classList.remove('hide'); // navを再表示
-            });
-        });
-
-        // モーダルの外側をクリックして閉じる
-        window.addEventListener('click', (event) => {
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.classList.remove('active'); // モーダル非表示
-                    document.querySelector('nav').classList.remove('hide'); // navを再表示
-                }
-            });
-        });
-
-        window.addEventListener('touchstart', (event) => {
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.classList.remove('active'); // モーダル非表示
-                    document.querySelector('nav').classList.remove('hide'); // navを再表示
-                }
-            });
+    // ボタンクリックでモーダルを開く
+    modalBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            modals[index].classList.add('active'); // モーダル表示
+            document.querySelector('nav').style.display = 'none'; // navを非表示にする
         });
     });
+
+    // 閉じるボタンでモーダルを閉じる
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetModal = btn.getAttribute('data-target');
+            document.getElementById(targetModal).classList.remove('active'); // モーダル非表示
+            document.querySelector('nav').style.display = ''; // navを再表示
+        });
+    });
+
+    // モーダルの外側をクリックして閉じる
+    window.addEventListener('click', (event) => {
+        modals.forEach(modal => {
+            if (event.target === modal) {
+                modal.classList.remove('active'); // モーダル非表示
+                document.querySelector('nav').style.display = ''; // navを再表示
+            }
+        });
+    });
+});
 
 
     window.addEventListener('scroll', function() {
