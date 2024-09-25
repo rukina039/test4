@@ -326,18 +326,19 @@
             nav.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
         }
     });
-    
-document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener('DOMContentLoaded', function() {
     const modalBtns = document.querySelectorAll('[id^="modalBtn"]');
     const modals = document.querySelectorAll('.modal');
     const closeBtns = document.querySelectorAll('.close');
-    const nav = document.querySelector('nav'); // navを取得
+    const body = document.querySelector('body');
+    const nav = document.querySelector('nav');
 
-    // モーダルを開く際にnavを非表示にする
+    // ボタンクリックでモーダルを開く
     modalBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            modals[index].classList.add('active'); // モーダルを表示
-            nav.classList.add('hidden'); // navを非表示
+            modals[index].classList.add('active');
+            body.classList.add('modal-active'); // モーダルが開いた時にクラスを追加
         });
     });
 
@@ -345,21 +346,34 @@ document.addEventListener('DOMContentLoaded', function() {
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetModal = btn.getAttribute('data-target');
-            document.getElementById(targetModal).classList.remove('active'); // モーダルを非表示
-            nav.classList.remove('hidden'); // navを再表示
+            document.getElementById(targetModal).classList.remove('active');
+            body.classList.remove('modal-active'); // モーダルが閉じた時にクラスを削除
         });
     });
 
-    // モーダルの外側をクリックして閉じる
+    // モーダル外側をクリックして閉じる
     window.addEventListener('click', (event) => {
         modals.forEach(modal => {
             if (event.target === modal) {
-                modal.classList.remove('active'); // モーダルを非表示
-                nav.classList.remove('hidden'); // navを再表示
+                modal.classList.remove('active');
+                body.classList.remove('modal-active'); // モーダルが閉じた時にクラスを削除
             }
         });
     });
 });
+
+
+    window.addEventListener('scroll', function() {
+        var nav = document.querySelector('nav');
+        var scrollPosition = window.scrollY;
+
+        // スクロール位置が50px以上ならnavを表示する
+        if (scrollPosition > 50) {
+            nav.classList.add('visible');
+        } else {
+            nav.classList.remove('visible');
+        }
+    });
 
     </script>
 </body>
