@@ -576,25 +576,21 @@ nav ul li a.active {
 
 
 /* モバイル対応 */
+/* モバイル対応 */
 @media screen and (max-width: 768px) {
     /* ナビゲーションバー */
-    nav {
-        padding: 5px 10px; /* パディングを小さく */
-    }
     nav ul {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2列のレイアウトにする */
-        gap: 10px; /* 各項目の間にスペースを設ける */
+        flex-wrap: wrap; /* 複数行に対応させる */
+        justify-content: space-between; /* 左右に余白を設定 */
     }
     nav ul li {
-        margin: 5px 0; /* マージンを小さく */
-    }
-    nav ul li a {
-        font-size: 0.75rem; /* フォントサイズを調整 */
+        width: 45%; /* リスト項目を2列に調整 */
+        margin: 5px 0; /* 縦方向の間隔を設定 */
     }
 
-    nav.hide {
-        display: none; /* 非表示にする */
+    /* モーダルが表示されているときnavを非表示 */
+    .modal.active ~ nav {
+        display: none;
     }
 
     /* タイトルサイズ調整 */
