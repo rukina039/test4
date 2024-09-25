@@ -630,6 +630,22 @@ nav ul li a.active {
         font-size: 1rem; /* リンクの文字サイズを調整 */
     }
 
+        /* アイコンのスタイル */
+        .commenter-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #333;
+            margin: 0 15px;
+        }
+
+        .commenter-icon img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+
     .modal-content {
         width: 95%;  /* モバイル画面幅の95%を占める */
         height: 90vh; /* ビューポートの高さの90%を占める */
