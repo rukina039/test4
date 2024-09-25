@@ -302,14 +302,15 @@ nav ul li a.active {
 
 .topics-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2列のレイアウト */
-    gap: 20px;
+    gap: 5px;
     padding: 20px;
     justify-items: center;
 }
 
 .topic-title {
     font-size: 1.5rem;
+    width: 1000px;
+    height: 50px;
     color: #ff4500;
     background-color: #ffcc80;
     padding: 15px;
@@ -644,11 +645,21 @@ nav ul li a.active {
             height: 50px;
             border-radius: 50%;
         }
+
+
+    .modal-content {
+        width: 95%;  /* モバイル画面幅の95%を占める */
+        height: 90vh; /* ビューポートの高さの90%を占める */
+        margin: 5vh auto; /* 上下5%の余白を確保 */
+        padding: 10px; /* コンテンツのパディングを少し小さく */
+        max-width: none; /* 最大幅の制限を解除 */
+        border-radius: 10px; /* 角を少し丸く */
+    }
     
- .modal-action {
-        width: 100%;  /* 横幅を最大化 */
-        padding: 5px;  /* ボタンの上下左右に余白を設定 */
-        font-size: 1.0rem;  /* 文字サイズを大きく調整 */
+    .topic-title {
+        font-size: 1.5rem;
+        width: 750px;
+        height: 100px;
     }
 
     /* トピックセクションの調整 */
