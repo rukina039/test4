@@ -587,7 +587,7 @@ nav ul li a.active {
         margin: 5px 0; /* 縦方向の間隔を設定 */
     }
     nav ul li a {
-        font-size: 0.6rem; /* フォントサイズを調整 */
+        font-size: 0.75rem; /* フォントサイズを調整 */
     }
 
     /* モーダルが表示されているときnavを非表示 */
@@ -652,8 +652,10 @@ nav ul li a.active {
         margin-top: 10px; /* フッターの余白を少し小さく */
     }
 
-    .modal-action {
-        padding: 10px 15px; /* モーダル内ボタンのサイズを少し調整 */
+ .modal-action {
+        width: 100%;  /* 横幅を最大化 */
+        padding: 5px;  /* ボタンの上下左右に余白を設定 */
+        font-size: 1.0rem;  /* 文字サイズを大きく調整 */
     }
 
     /* トピックセクションの調整 */
