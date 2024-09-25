@@ -658,8 +658,8 @@ nav ul li a.active {
     
     .topic-title {
         font-size: 1.5rem;
-        width: 750px;
-        height: 100px;
+        width: 100%;
+        height: 100%;
     }
 
     /* トピックセクションの調整 */
