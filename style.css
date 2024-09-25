@@ -302,9 +302,8 @@ nav ul li a.active {
 
 .topics-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2列のレイアウト */
-    gap: 20px;
-    padding: 20px;
+    gap: 5px;
+    padding: 5px;
     justify-items: center;
 }
 
@@ -360,10 +359,10 @@ nav ul li a.active {
 .modal-content {
     background: linear-gradient(135deg, #ff8c42, #ffe5b4);
     margin: 10% auto;
-    padding: 20px;
+    padding: 5px;
     width: 80%;
     max-width: 500px;
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     animation: popIn 0.5s ease-out;
 }
@@ -399,7 +398,7 @@ nav ul li a.active {
     color: #444;
     line-height: 1.6;
     text-align: center;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 /* モーダルのフッター */
@@ -574,22 +573,42 @@ nav ul li a.active {
         color: #333;
     }
 
+
 /* モバイル対応 */
 @media screen and (max-width: 768px) {
-    /* ナビゲーションバー */
     nav {
         padding: 5px 10px; /* パディングを小さく */
     }
-    nav ul {
+
+   nav ul {
         flex-direction: row;
         flex-wrap: wrap; /* ラップして2列になるように */
-        align-items: flex-start;
+        justify-content: flex-end; /* 右寄せにする */
+
     }
+
     nav ul li {
-        margin: 5px 0; /* リスト項目のマージンを縮小 */
+        width: 50%; /* 各リスト項目を2列に分ける */
+        margin: 5px 0; /* マージン調整 */
     }
+
     nav ul li a {
         font-size: 0.75rem; /* フォントサイズを縮小 */
+    }
+
+    /* ナビゲーションバー */
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /* モーダルが開いている時、navを非表示にする */
+    .modal.active + nav {
+        display: none;
+    }
+    
+    /* navが開いている時にモーダルを開くとnavを非表示にする */
+    nav.hidden {
+        display: none;
     }
 
     /* タイトルサイズ調整 */
@@ -640,6 +659,12 @@ nav ul li a.active {
         font-size: 1.1em; /* 段落の文字サイズを少し小さく */
     }
 
+/* モーダルの外側をクリックしたときに閉じる処理 */
+.modal.active {
+    display: block;
+    opacity: 1;
+    }
+
     /* お問い合わせフォームの幅調整 */
     form input, form textarea {
         width: 90%; /* フォームの幅を広げる */
@@ -679,24 +704,6 @@ nav ul li a.active {
     footer {
         font-size: 0.9em; /* フッターの文字サイズを小さく */
     }
-}
-
-    /* モーダルが開いている時、navを非表示にする */
-    .modal.active + nav {
-        display: none;
-    }
-    
-    /* navが開いている時にモーダルを開くとnavを非表示にする */
-    nav.hidden {
-        display: none;
-    }
-}
-
-/* モーダルの外側をクリックしたときに閉じる処理 */
-.modal.active {
-    display: block;
-    opacity: 1;
-}
 
 /* モーダル外クリック時に閉じる */
 window.addEventListener('click', (event) => {
@@ -707,4 +714,6 @@ window.addEventListener('click', (event) => {
         }
     });
 });
+
+
 </style>
