@@ -587,7 +587,9 @@ nav ul li a.active {
         width: 45%; /* リスト項目を2列に調整 */
         margin: 5px 0; /* 縦方向の間隔を設定 */
     }
-
+        nav ul li a {
+        font-size: 0.75rem; /* フォントサイズを調整 */
+    }
     /* モーダルが表示されているときnavを非表示 */
     .modal.active ~ nav {
         display: none;
